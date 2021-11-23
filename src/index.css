@@ -1,13 +1,122 @@
-body {
+*,
+after,
+before {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background: #171123;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: #222;
+}
+main {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.title {
+  margin: 3rem 0;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.container {
+  width: 90vw;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.menu {
+  padding: 3rem 0;
+  cursor: pointer;
+}
+
+.menu-parent {
+  display: grid;
+  place-items: center;
+  gap: 2rem;
+}
+
+.menu-list {
+  background: #222;
+  border-radius: 0.15rem;
+}
+
+.menu-list img {
+  border-top-left-radius: 0.15rem;
+  border-top-right-radius: 0.15rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+header {
+  padding: 1rem 2rem;
+  color: #fff;
+  background: #372248;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h4 {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+}
+
+.category {
+  background: #fff;
+  color: #222;
+  font-weight: bold;
+  padding: 0.25rem;
+  letter-spacing: 0.25rem;
+}
+
+.category-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  padding: 0.75rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #32b858;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  border-bottom: 2px solid #32b858;
+  color: #fff;
+}
+
+@media screen and (min-width: 762px) {
+  .menu-parent {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .menu-parent {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .menu-list img {
+    height: 355px;
+  }
 }

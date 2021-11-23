@@ -1,17 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
+import ReactDom from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Menu from './Menu';
+import Category from './Category';
+import { data } from './data';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// duplicate category
+const ButtonCategory = ['All', ...new Set(data.map((item) => item.category))];
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const App = () => {
+  const [menuList, SetMenuList] = useState(data);
+  const [category, setCategory] = useState(ButtonCategory);
+
+  const filterCategory = (category) => {
+    const newCategory = data.filter(
+      (categoryList) => categoryList.category === category
+    );
+    // but if category same with all please add all original array
+    if (category === 'All') {
+      return SetMenuList(data);
+    }
+    // update new menuList use newCategory
+    SetMenuList(newCategory);
+  };
+  return (
+    <main>
+      <div className='container'>
+        <div className='title'>
+          <h2>linux desktop environment</h2>
+        </div>
+        <div className='menu'>
+          <Category filterCategory={filterCategory} category={category} />
+          <Menu menuList={menuList} />
+        </div>
+      </div>
+    </main>
+  );
+};
+
+ReactDom.render(<App />, document.getElementById('root'));
